@@ -16,3 +16,12 @@ D:\Winform\CNPM\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLa
 D:\Winform\CNPM\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
 D:\Winform\CNPM\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 D:\Winform\CNPM\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csprojAssemblyReference.cache
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+D:\Github\food_menu_management\QLThucDon\QLThucDon\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete

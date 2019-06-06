@@ -16,7 +16,7 @@ namespace QlThucDon
         private MonAnBAL MonAn = new MonAnBAL();
         private NhomMonAnBAL NhomMonAn = new NhomMonAnBAL();
         private NguyenLieuBAL NguyenLieu = new NguyenLieuBAL();
-        //private ThucDonBAL ThucDon = new ThucDonBAL();
+        private ThucDonBAL ThucDon = new ThucDonBAL();
 
         string monSang1;
         string monSang2;
@@ -49,18 +49,22 @@ namespace QlThucDon
 
         private void UCThucDon_Load(object sender, EventArgs e)
         {
-            btnHuy.Hide();
         }
 
         //Hiển thị món
         private void cbSang1_SelectedValueChanged(object sender, EventArgs e)
         {
+
             int MonSang1 = Convert.ToInt32(cbSang1.SelectedIndex.ToString());
             DataSet dsMonSang = MonAn.LayMonAnTheoID(MonSang1 + 1);
             cbMonSang1.DataSource = dsMonSang.Tables[0];
             cbMonSang1.ValueMember = dsMonSang.Tables[0].Columns[0].ToString();
             cbMonSang1.DisplayMember = dsMonSang.Tables[0].Columns[1].ToString();
-            monSang1 = cbSang1.SelectedValue.ToString();
+            if (cbSang1.SelectedIndex >= 0)
+            {
+                monSang1 = cbSang1.SelectedValue.ToString();
+            }
+
         }
 
         private void cbSang2_SelectedValueChanged(object sender, EventArgs e)
@@ -70,7 +74,10 @@ namespace QlThucDon
             cbMonSang2.DataSource = dsMonSang1.Tables[0];
             cbMonSang2.ValueMember = dsMonSang1.Tables[0].Columns[0].ToString();
             cbMonSang2.DisplayMember = dsMonSang1.Tables[0].Columns[1].ToString();
-            monSang2 = cbMonSang2.SelectedValue.ToString();
+            if (cbSang2.SelectedIndex >= 0)
+            {
+                monSang2 = cbMonSang2.SelectedValue.ToString();
+            }
         }
 
         private void cbXe11_SelectedValueChanged(object sender, EventArgs e)
@@ -80,7 +87,10 @@ namespace QlThucDon
             cbMonXe11.DataSource = dsMonXe11.Tables[0];
             cbMonXe11.ValueMember = dsMonXe11.Tables[0].Columns[0].ToString();
             cbMonXe11.DisplayMember = dsMonXe11.Tables[0].Columns[1].ToString();
-            monXe11 = cbMonXe11.SelectedValue.ToString();
+            if (cbMonXe11.SelectedIndex >= 0)
+            {
+                monXe11 = cbMonXe11.SelectedValue.ToString();
+            }
         }
 
         private void cbXe12_SelectedValueChanged(object sender, EventArgs e)
@@ -90,7 +100,10 @@ namespace QlThucDon
             cbMonXe12.DataSource = dsMonXe12.Tables[0];
             cbMonXe12.ValueMember = dsMonXe12.Tables[0].Columns[0].ToString();
             cbMonXe12.DisplayMember = dsMonXe12.Tables[0].Columns[1].ToString();
-            monXe12 = cbMonXe12.SelectedValue.ToString();
+            if (cbMonXe12.SelectedIndex >= 0)
+            {
+                monXe12 = cbMonXe12.SelectedValue.ToString();
+            }
         }
 
         private void cbTrua1_SelectedValueChanged(object sender, EventArgs e)
@@ -100,7 +113,10 @@ namespace QlThucDon
             cbMonTrua1.DataSource = dsMonTrua1.Tables[0];
             cbMonTrua1.ValueMember = dsMonTrua1.Tables[0].Columns[0].ToString();
             cbMonTrua1.DisplayMember = dsMonTrua1.Tables[0].Columns[1].ToString();
-            monTrua1 = cbMonTrua1.SelectedValue.ToString();
+            if (cbMonTrua1.SelectedIndex >= 0)
+            {
+                monTrua1 = cbMonTrua1.SelectedValue.ToString();
+            }
         }
 
         private void cbTrua2_SelectedValueChanged(object sender, EventArgs e)
@@ -110,7 +126,10 @@ namespace QlThucDon
             cbMonTrua2.DataSource = dsMonTrua2.Tables[0];
             cbMonTrua2.ValueMember = dsMonTrua2.Tables[0].Columns[0].ToString();
             cbMonTrua2.DisplayMember = dsMonTrua2.Tables[0].Columns[1].ToString();
-            monTrua2 = cbMonTrua2.SelectedValue.ToString();
+            if (cbMonTrua2.SelectedIndex >= 0)
+            {
+                monTrua2 = cbMonTrua2.SelectedValue.ToString();
+            }
         }
 
         private void cbTrua3_SelectedValueChanged(object sender, EventArgs e)
@@ -120,7 +139,10 @@ namespace QlThucDon
             cbMonTrua3.DataSource = dsMonTrua3.Tables[0];
             cbMonTrua3.ValueMember = dsMonTrua3.Tables[0].Columns[0].ToString();
             cbMonTrua3.DisplayMember = dsMonTrua3.Tables[0].Columns[1].ToString();
-            monTrua3 = cbMonTrua3.SelectedValue.ToString();
+            if (cbMonTrua3.SelectedIndex >= 0)
+            {
+                monTrua3 = cbMonTrua3.SelectedValue.ToString();
+            }
         }
 
         private void cbTrua4_SelectedValueChanged(object sender, EventArgs e)
@@ -130,7 +152,11 @@ namespace QlThucDon
             cbMonTrua4.DataSource = dsMonTrua4.Tables[0];
             cbMonTrua4.ValueMember = dsMonTrua4.Tables[0].Columns[0].ToString();
             cbMonTrua4.DisplayMember = dsMonTrua4.Tables[0].Columns[1].ToString();
-            monTrua4 = cbMonTrua4.SelectedValue.ToString();
+            if (cbMonTrua4.SelectedIndex >= 0)
+            {
+                monTrua4 = cbMonTrua4.SelectedValue.ToString();
+            }
+
         }
 
         private void cbXe21_SelectedValueChanged(object sender, EventArgs e)
@@ -140,7 +166,11 @@ namespace QlThucDon
             cbMonXe21.DataSource = dsMonXe21.Tables[0];
             cbMonXe21.ValueMember = dsMonXe21.Tables[0].Columns[0].ToString();
             cbMonXe21.DisplayMember = dsMonXe21.Tables[0].Columns[1].ToString();
-            monXe21 = cbMonXe21.SelectedValue.ToString();
+            if (cbMonXe21.SelectedIndex >= 0)
+            {
+                monXe21 = cbMonXe21.SelectedValue.ToString();
+            }
+
         }
 
         private void cbXe22_SelectedValueChanged(object sender, EventArgs e)
@@ -150,7 +180,10 @@ namespace QlThucDon
             cbMonXe22.DataSource = dsMonXe22.Tables[0];
             cbMonXe22.ValueMember = dsMonXe22.Tables[0].Columns[0].ToString();
             cbMonXe22.DisplayMember = dsMonXe22.Tables[0].Columns[1].ToString();
-            monXe22 = cbMonXe22.SelectedValue.ToString();
+            if (cbMonXe22.SelectedIndex >= 0)
+            {
+                monXe22 = cbMonXe22.SelectedValue.ToString();
+            }
         }
 
 
@@ -160,11 +193,28 @@ namespace QlThucDon
         private void cbMonSang1_SelectedValueChanged(object sender, EventArgs e)
         {
             GetNguyenLieu();
+            try
+            {
+                string x = cbMonSang1.SelectedValue.ToString();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void cbMonSang2_SelectedValueChanged(object sender, EventArgs e)
         {
             GetNguyenLieu();
+            try
+            {
+                string y = cbMonSang2.SelectedValue.ToString();
+                //MessageBox.Show(y);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void cbMonXe11_SelectedValueChanged(object sender, EventArgs e)
@@ -218,27 +268,35 @@ namespace QlThucDon
             float Kcal = 0;
             float Glucid = 0;
             //Nếu cb món có giá trị khác null, tức là đã chọn.
-            if (cbMonSang1.ValueMember != "")
+            if (cbMonSang1.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonSang1.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                dsNguyenLieu = dsMon;
-
-                DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                try
                 {
-                    Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                    Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                    Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                    Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                    int ChiTietMon = Convert.ToInt32(cbMonSang1.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    dsNguyenLieu = dsMon;
+
+                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                    {
+                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                    }
+                    lblTinhBot.Text = Glucid.ToString() + " Gam";
+                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
+                    lblChatBeo.Text = Lipid.ToString() + " Gam";
+                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
-                lblTinhBot.Text = Glucid.ToString() + " Gam";
-                lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                lblChatBeo.Text = Lipid.ToString() + " Gam";
-                lblChatDam.Text = Protid.ToString() + " Gam";
+                catch (Exception)
+                {
+
+                  
+                }
             }
 
-            if (cbMonSang2.ValueMember != "")
+            if (cbMonSang2.SelectedIndex>0)
             {
                 int ChiTietMon = Convert.ToInt32(cbMonSang2.SelectedValue.ToString());
                 dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
@@ -525,48 +583,6 @@ namespace QlThucDon
             }
         }
 
-        //ID của các món thay đổi theo tên biến
-        //Làm testcase báo lỗi khi chưa chọn món và chưa điền suất ăn
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            //int SuatAn = Convert.ToInt32(txtSuatAn.Text);
-            if (txtSuatAn.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập số suất ăn.");
-                return;
-            }
-            if (Convert.ToInt32(txtSuatAn.Text) < 0)
-            {
-                MessageBox.Show("Vui lòng nhập ít nhất 1 suất ăn.");
-                return;
-            }
-            DateTime ngay = dtNgay.Value.Date;
-            var ngayString = ngay.ToString("dd/MM/yyyy");
-            DateTime now = DateTime.Now;
-            var nowString = now.ToString("dd/MM/yyyy");
-
-            if ((cbSang1.ValueMember.ToString() == "")
-                && (cbSang2.ValueMember.ToString() == "")
-                && cbXe11.ValueMember.ToString() == "" && cbXe12.ValueMember.ToString() == "" && cbTrua1.ValueMember.ToString() == "" && cbTrua2.ValueMember.ToString() == "" && cbTrua3.ValueMember.ToString() == "" && cbTrua4.ValueMember.ToString() == "" && cbXe21.ValueMember.ToString() == "" && cbXe22.ValueMember.ToString() == ""
-                )
-            {
-                MessageBox.Show("Vui lòng nhập ít nhất 1 món ăn.");
-                return;
-            }
-
-
-            //int MonSang1 = Convert.ToInt32(monSang1.ToString());
-
-
-
-            //for (int i = 0; i < dgvNguyenLieu.RowCount - 1; i++)
-            //{
-            //    //ThucDon.ThemThucDon(now, ngayString, SuatAn, monSang1);
-            //}
-
-
-        }
-
         private void cbSang1_Click(object sender, EventArgs e)
         {
             DataSet dsNhomMonAn = NhomMonAn.LayTatCaNhomMonAn();
@@ -660,29 +676,43 @@ namespace QlThucDon
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            //td.reset
-            //cbMonSang1.DataSource = new BindingSource(cbMonSang1, null);
-            //cbMonSang1.DisplayMember = "Value";
-            //cbMonSang1.ValueMember = "Key";
-            //cbSang1.DataSource = new BindingSource(cbSang1, null);
-            //cbSang1.DisplayMember = "Value";
-            //cbSang1.ValueMember = "Key";
+            cbSang1.SelectedIndex = -1;
+            cbSang2.SelectedIndex = -1;
+            cbXe11.SelectedIndex = -1;
+            cbXe12.SelectedIndex = -1;
+            cbXe21.SelectedIndex = -1;
+            cbXe22.SelectedIndex = -1;
+            cbTrua1.SelectedIndex = -1;
+            cbTrua2.SelectedIndex = -1;
+            cbTrua3.SelectedIndex = -1;
+            cbTrua4.SelectedIndex = -1;
+            dgvNguyenLieu.DataSource = null;
+            lblChatBeo.Text = "";
+            lblChatDam.Text = "";
+            lblNangLuong.Text = "";
+            lblTinhBot.Text = "";
+            txtSuatAn.Text = "";
         }
 
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
+            string SuatAn = txtSuatAn.Text.Trim();
+            int SoSuatAn;
+            bool isSoSuatAn = int.TryParse(SuatAn,out SoSuatAn);
+            if (isSoSuatAn)
+            {
+                if (Convert.ToInt32(txtSuatAn.Text) < 0)
+                {
+                    MessageBox.Show("Vui lòng nhập ít nhất 1 suất ăn.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập số suất ăn hợp lệ");
+                return;
+            }
 
-            //int SuatAn = Convert.ToInt32(txtSuatAn.Text);
-            if (txtSuatAn.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập số suất ăn.");
-                return;
-            }
-            if (Convert.ToInt32(txtSuatAn.Text) < 0)
-            {
-                MessageBox.Show("Vui lòng nhập ít nhất 1 suất ăn.");
-                return;
-            }
             DateTime ngay = dtNgay.Value.Date;
             var ngayString = ngay.ToString("dd/MM/yyyy");
             DateTime now = DateTime.Now;
@@ -696,8 +726,23 @@ namespace QlThucDon
                 MessageBox.Show("Vui lòng nhập ít nhất 1 món ăn.");
                 return;
             }
+            if (cbMonSang1.SelectedIndex.ToString() == "-1")
+            {
+                MessageBox.Show("cbMonSang1 rỗng");
+                //save
+            }
+            else
+            {
+                //ThucDon.ThemThucDon=
+                MessageBox.Show(cbMonSang1.SelectedValue.ToString());
+            }
 
-           
+            if (cbMonSang2.SelectedIndex.ToString() == "-1")
+            {
+                
+                //MessageBox.Show("cbMonSang2 rỗng");
+                //save
+            }
         }
     }
 }

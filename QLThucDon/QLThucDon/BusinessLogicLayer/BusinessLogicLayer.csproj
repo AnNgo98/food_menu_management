@@ -51,6 +51,7 @@
     <Compile Include="TaiKhoanBAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NhomMonAnBAL.cs" />
+    <Compile Include="ThucDonBAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

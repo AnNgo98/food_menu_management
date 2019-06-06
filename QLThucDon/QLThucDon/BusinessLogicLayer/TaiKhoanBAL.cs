@@ -11,7 +11,7 @@ namespace BusinessLogicLayer
     public class TaiKhoanBAL
     {
         private DAL db;
-
+        
         public TaiKhoanBAL()
         {
             db = new DAL();
