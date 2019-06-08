@@ -87,6 +87,7 @@
             this.dgvNguyenLieu.RowTemplate.Height = 24;
             this.dgvNguyenLieu.Size = new System.Drawing.Size(355, 165);
             this.dgvNguyenLieu.TabIndex = 35;
+            this.dgvNguyenLieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguyenLieu_CellContentClick);
             // 
             // txtSuatAn
             // 

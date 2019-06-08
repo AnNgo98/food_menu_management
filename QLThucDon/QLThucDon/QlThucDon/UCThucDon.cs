@@ -820,6 +820,11 @@ namespace QlThucDon
         {
 
         }
+
+        private void dgvNguyenLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

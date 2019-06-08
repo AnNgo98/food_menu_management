@@ -30,25 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvNgayThucHien = new System.Windows.Forms.DataGridView();
             this.cmsThucDon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.thêmThựcĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sửaThựcĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xóaThựcĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbMonSang1 = new System.Windows.Forms.Label();
+            this.lbMonSang2 = new System.Windows.Forms.Label();
+            this.lbMonXe2 = new System.Windows.Forms.Label();
+            this.lbMonXe1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lbMonTrua2 = new System.Windows.Forms.Label();
+            this.lbMonTrua1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lbMonTrua4 = new System.Windows.Forms.Label();
+            this.lbMonTrua3 = new System.Windows.Forms.Label();
+            this.lbMonXe4 = new System.Windows.Forms.Label();
+            this.lbMonXe3 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -74,8 +74,15 @@
             this.label38 = new System.Windows.Forms.Label();
             this.btnHuy = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnLuu = new Bunifu.Framework.UI.BunifuFlatButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.food_menu_managermentDataSet = new QlThucDon.food_menu_managermentDataSet();
+            this.thucDonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.thucDonTableAdapter = new QlThucDon.food_menu_managermentDataSetTableAdapters.ThucDonTableAdapter();
+            this.ngayThucHienThucDonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbNgayThucHien = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNgayThucHien)).BeginInit();
             this.cmsThucDon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.food_menu_managermentDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.thucDonBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,17 +95,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ngày";
             // 
-            // dataGridView1
+            // dgvNgayThucHien
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ContextMenuStrip = this.cmsThucDon;
-            this.dataGridView1.Location = new System.Drawing.Point(58, 63);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(186, 334);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvNgayThucHien.AutoGenerateColumns = false;
+            this.dgvNgayThucHien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNgayThucHien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ngayThucHienThucDonDataGridViewTextBoxColumn});
+            this.dgvNgayThucHien.ContextMenuStrip = this.cmsThucDon;
+            this.dgvNgayThucHien.DataSource = this.thucDonBindingSource;
+            this.dgvNgayThucHien.Location = new System.Drawing.Point(47, 63);
+            this.dgvNgayThucHien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvNgayThucHien.Name = "dgvNgayThucHien";
+            this.dgvNgayThucHien.RowTemplate.Height = 24;
+            this.dgvNgayThucHien.Size = new System.Drawing.Size(186, 334);
+            this.dgvNgayThucHien.TabIndex = 1;
+            this.dgvNgayThucHien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNgayThucHien_CellClick);
+            this.dgvNgayThucHien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cmsThucDon
             // 
@@ -150,49 +162,49 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Sáng";
             // 
-            // label4
+            // lbMonSang1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(396, 75);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 17);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Mon1";
+            this.lbMonSang1.AutoSize = true;
+            this.lbMonSang1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonSang1.Location = new System.Drawing.Point(396, 75);
+            this.lbMonSang1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonSang1.Name = "lbMonSang1";
+            this.lbMonSang1.Size = new System.Drawing.Size(43, 17);
+            this.lbMonSang1.TabIndex = 4;
+            this.lbMonSang1.Text = "Mon1";
             // 
-            // label5
+            // lbMonSang2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(396, 110);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 17);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Mon2";
+            this.lbMonSang2.AutoSize = true;
+            this.lbMonSang2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonSang2.Location = new System.Drawing.Point(396, 110);
+            this.lbMonSang2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonSang2.Name = "lbMonSang2";
+            this.lbMonSang2.Size = new System.Drawing.Size(43, 17);
+            this.lbMonSang2.TabIndex = 5;
+            this.lbMonSang2.Text = "Mon2";
             // 
-            // label6
+            // lbMonXe2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(583, 110);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Mon2";
+            this.lbMonXe2.AutoSize = true;
+            this.lbMonXe2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonXe2.Location = new System.Drawing.Point(583, 110);
+            this.lbMonXe2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonXe2.Name = "lbMonXe2";
+            this.lbMonXe2.Size = new System.Drawing.Size(43, 17);
+            this.lbMonXe2.TabIndex = 8;
+            this.lbMonXe2.Text = "Mon2";
             // 
-            // label7
+            // lbMonXe1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(583, 75);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 17);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Mon1";
+            this.lbMonXe1.AutoSize = true;
+            this.lbMonXe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonXe1.Location = new System.Drawing.Point(583, 75);
+            this.lbMonXe1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonXe1.Name = "lbMonXe1";
+            this.lbMonXe1.Size = new System.Drawing.Size(43, 17);
+            this.lbMonXe1.TabIndex = 7;
+            this.lbMonXe1.Text = "Mon1";
             // 
             // label8
             // 
@@ -205,27 +217,27 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "Xế 1";
             // 
-            // label9
+            // lbMonTrua2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(396, 201);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 17);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Mon2";
+            this.lbMonTrua2.AutoSize = true;
+            this.lbMonTrua2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonTrua2.Location = new System.Drawing.Point(396, 201);
+            this.lbMonTrua2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonTrua2.Name = "lbMonTrua2";
+            this.lbMonTrua2.Size = new System.Drawing.Size(43, 17);
+            this.lbMonTrua2.TabIndex = 11;
+            this.lbMonTrua2.Text = "Mon2";
             // 
-            // label10
+            // lbMonTrua1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(396, 166);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 17);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Mon1";
+            this.lbMonTrua1.AutoSize = true;
+            this.lbMonTrua1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonTrua1.Location = new System.Drawing.Point(396, 166);
+            this.lbMonTrua1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonTrua1.Name = "lbMonTrua1";
+            this.lbMonTrua1.Size = new System.Drawing.Size(43, 17);
+            this.lbMonTrua1.TabIndex = 10;
+            this.lbMonTrua1.Text = "Mon1";
             // 
             // label11
             // 
@@ -238,49 +250,49 @@
             this.label11.TabIndex = 9;
             this.label11.Text = "Trưa";
             // 
-            // label12
+            // lbMonTrua4
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(396, 269);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 17);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Mon2";
+            this.lbMonTrua4.AutoSize = true;
+            this.lbMonTrua4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonTrua4.Location = new System.Drawing.Point(396, 269);
+            this.lbMonTrua4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonTrua4.Name = "lbMonTrua4";
+            this.lbMonTrua4.Size = new System.Drawing.Size(43, 17);
+            this.lbMonTrua4.TabIndex = 13;
+            this.lbMonTrua4.Text = "Mon2";
             // 
-            // label13
+            // lbMonTrua3
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(396, 234);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 17);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Mon1";
+            this.lbMonTrua3.AutoSize = true;
+            this.lbMonTrua3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonTrua3.Location = new System.Drawing.Point(396, 234);
+            this.lbMonTrua3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonTrua3.Name = "lbMonTrua3";
+            this.lbMonTrua3.Size = new System.Drawing.Size(43, 17);
+            this.lbMonTrua3.TabIndex = 12;
+            this.lbMonTrua3.Text = "Mon1";
             // 
-            // label14
+            // lbMonXe4
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(583, 201);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(43, 17);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Mon2";
+            this.lbMonXe4.AutoSize = true;
+            this.lbMonXe4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonXe4.Location = new System.Drawing.Point(583, 201);
+            this.lbMonXe4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonXe4.Name = "lbMonXe4";
+            this.lbMonXe4.Size = new System.Drawing.Size(43, 17);
+            this.lbMonXe4.TabIndex = 16;
+            this.lbMonXe4.Text = "Mon2";
             // 
-            // label15
+            // lbMonXe3
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(583, 166);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 17);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "Mon1";
+            this.lbMonXe3.AutoSize = true;
+            this.lbMonXe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonXe3.Location = new System.Drawing.Point(583, 166);
+            this.lbMonXe3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMonXe3.Name = "lbMonXe3";
+            this.lbMonXe3.Size = new System.Drawing.Size(43, 17);
+            this.lbMonXe3.TabIndex = 15;
+            this.lbMonXe3.Text = "Mon1";
             // 
             // label16
             // 
@@ -605,10 +617,40 @@
             this.btnLuu.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // food_menu_managermentDataSet
+            // 
+            this.food_menu_managermentDataSet.DataSetName = "food_menu_managermentDataSet";
+            this.food_menu_managermentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // thucDonBindingSource
+            // 
+            this.thucDonBindingSource.DataMember = "ThucDon";
+            this.thucDonBindingSource.DataSource = this.food_menu_managermentDataSet;
+            // 
+            // thucDonTableAdapter
+            // 
+            this.thucDonTableAdapter.ClearBeforeFill = true;
+            // 
+            // ngayThucHienThucDonDataGridViewTextBoxColumn
+            // 
+            this.ngayThucHienThucDonDataGridViewTextBoxColumn.DataPropertyName = "NgayThucHienThucDon";
+            this.ngayThucHienThucDonDataGridViewTextBoxColumn.HeaderText = "NgayThucHienThucDon";
+            this.ngayThucHienThucDonDataGridViewTextBoxColumn.Name = "ngayThucHienThucDonDataGridViewTextBoxColumn";
+            // 
+            // cbNgayThucHien
+            // 
+            this.cbNgayThucHien.FormattingEnabled = true;
+            this.cbNgayThucHien.Location = new System.Drawing.Point(696, 53);
+            this.cbNgayThucHien.Name = "cbNgayThucHien";
+            this.cbNgayThucHien.Size = new System.Drawing.Size(121, 21);
+            this.cbNgayThucHien.TabIndex = 42;
+            this.cbNgayThucHien.SelectedValueChanged += new System.EventHandler(this.cbNgayThucHien_SelectedValueChanged);
+            // 
             // UCLoadThucDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbNgayThucHien);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.label38);
@@ -633,28 +675,31 @@
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.lbMonXe4);
+            this.Controls.Add(this.lbMonXe3);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lbMonTrua4);
+            this.Controls.Add(this.lbMonTrua3);
+            this.Controls.Add(this.lbMonTrua2);
+            this.Controls.Add(this.lbMonTrua1);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbMonXe2);
+            this.Controls.Add(this.lbMonXe1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbMonSang2);
+            this.Controls.Add(this.lbMonSang1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvNgayThucHien);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UCLoadThucDon";
             this.Size = new System.Drawing.Size(862, 488);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.UCLoadThucDon_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNgayThucHien)).EndInit();
             this.cmsThucDon.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.food_menu_managermentDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.thucDonBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -663,21 +708,21 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvNgayThucHien;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbMonSang1;
+        private System.Windows.Forms.Label lbMonSang2;
+        private System.Windows.Forms.Label lbMonXe2;
+        private System.Windows.Forms.Label lbMonXe1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbMonTrua2;
+        private System.Windows.Forms.Label lbMonTrua1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbMonTrua4;
+        private System.Windows.Forms.Label lbMonTrua3;
+        private System.Windows.Forms.Label lbMonXe4;
+        private System.Windows.Forms.Label lbMonXe3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ContextMenuStrip cmsThucDon;
         private System.Windows.Forms.ToolStripMenuItem thêmThựcĐơnToolStripMenuItem;
@@ -707,5 +752,10 @@
         private System.Windows.Forms.Label label38;
         private Bunifu.Framework.UI.BunifuFlatButton btnHuy;
         private Bunifu.Framework.UI.BunifuFlatButton btnLuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayThucHienThucDonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource thucDonBindingSource;
+        private food_menu_managermentDataSet food_menu_managermentDataSet;
+        private food_menu_managermentDataSetTableAdapters.ThucDonTableAdapter thucDonTableAdapter;
+        private System.Windows.Forms.ComboBox cbNgayThucHien;
     }
 }

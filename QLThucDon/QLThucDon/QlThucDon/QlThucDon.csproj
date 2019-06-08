@@ -80,6 +80,11 @@
     <Compile Include="crudThucPham.Designer.cs">
       <DependentUpon>crudThucPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="food_menu_managermentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>food_menu_managermentDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +152,17 @@
     <EmbeddedResource Include="UCThucPham.resx">
       <DependentUpon>UCThucPham.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="food_menu_managermentDataSet.xsc">
+      <DependentUpon>food_menu_managermentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="food_menu_managermentDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>food_menu_managermentDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="food_menu_managermentDataSet.xss">
+      <DependentUpon>food_menu_managermentDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

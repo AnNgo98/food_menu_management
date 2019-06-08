@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="food_menu_managermentDataSet" targetNamespace="http://tempuri.org/food_menu_managermentDataSet.xsd" xmlns:mstns="http://tempuri.org/food_menu_managermentDataSet.xsd" xmlns="http://tempuri.org/food_menu_managermentDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="food_menu_managermentConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="food_menu_managermentConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QlThucDon.Properties.Settings.GlobalReference.Default.food_menu_managermentConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ThucDonTableAdapter" GeneratorDataComponentClassName="ThucDonTableAdapter" Name="ThucDon" UserDataComponentName="ThucDonTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="food_menu_managermentConnectionString (Settings)" DbObjectName="food_menu_managerment.dbo.ThucDon" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT NgayThucHienThucDon FROM dbo.ThucDon</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NgayThucHienThucDon" DataSetColumn="NgayThucHienThucDon" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="food_menu_managermentDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="food_menu_managermentDataSet" msprop:Generator_UserDSName="food_menu_managermentDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ThucDon" msprop:Generator_TableClassName="ThucDonDataTable" msprop:Generator_TableVarName="tableThucDon" msprop:Generator_TablePropName="ThucDon" msprop:Generator_RowDeletingName="ThucDonRowDeleting" msprop:Generator_RowChangingName="ThucDonRowChanging" msprop:Generator_RowEvHandlerName="ThucDonRowChangeEventHandler" msprop:Generator_RowDeletedName="ThucDonRowDeleted" msprop:Generator_UserTableName="ThucDon" msprop:Generator_RowChangedName="ThucDonRowChanged" msprop:Generator_RowEvArgName="ThucDonRowChangeEvent" msprop:Generator_RowClassName="ThucDonRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NgayThucHienThucDon" msprop:Generator_ColumnVarNameInTable="columnNgayThucHienThucDon" msprop:Generator_ColumnPropNameInRow="NgayThucHienThucDon" msprop:Generator_ColumnPropNameInTable="NgayThucHienThucDonColumn" msprop:Generator_UserColumnName="NgayThucHienThucDon" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
