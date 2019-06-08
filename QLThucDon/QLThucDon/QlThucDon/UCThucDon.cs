@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer;
-using MetroFramework.Forms;
 
 namespace QlThucDon
 {
@@ -18,9 +17,7 @@ namespace QlThucDon
         private NhomMonAnBAL NhomMonAn = new NhomMonAnBAL();
         private NguyenLieuBAL NguyenLieu = new NguyenLieuBAL();
         private ThucDonBAL ThucDon = new ThucDonBAL();
-        private BuaAnBAL BuaAn = new BuaAnBAL();
 
-        
         string monSang1;
         string monSang2;
 
@@ -52,11 +49,6 @@ namespace QlThucDon
 
         private void UCThucDon_Load(object sender, EventArgs e)
         {
-            DataSet dsBuaAn = BuaAn.LayTatCaBuaAn();
-            lbSang.Text=dsBuaAn.Tables[0].Rows[0][1].ToString();
-            lbXeSang.Text = dsBuaAn.Tables[0].Rows[1][1].ToString();
-            lbTrua.Text = dsBuaAn.Tables[0].Rows[2][1].ToString();
-            lbXeChieu.Text = dsBuaAn.Tables[0].Rows[3][1].ToString();
         }
 
         //Hiển thị món
@@ -700,125 +692,57 @@ namespace QlThucDon
             lblNangLuong.Text = "";
             lblTinhBot.Text = "";
             txtSuatAn.Text = "";
-
         }
 
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
-            //string value1 = cbMonSang1.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value1))
-            //{
-
-            //}
-            //string value2 = cbMonSang2.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value2))
-            //{
-
-            //}
-            //string value3 = cbMonXe11.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value3))
-            //{
-
-            //}
-            //string value4 = cbMonXe12.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value4))
-            //{
-
-            //}
-            //string value5 = cbMonTrua1.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value5))
-            //{
-
-            //}
-            //string value6 = cbMonTrua2.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value6))
-            //{
-
-            //}
-            //string value7 = cbMonXe21.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value7))
-            //{
-
-            //}
-            //string value8 = cbMonXe22.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value8))
-            //{
-
-            //}
-
-            try
+            string SuatAn = txtSuatAn.Text.Trim();
+            int SoSuatAn;
+            bool isSoSuatAn = int.TryParse(SuatAn,out SoSuatAn);
+            if (isSoSuatAn)
             {
-               
-                string SuatAn = txtSuatAn.Text.Trim();
-                int SoSuatAn;
-                bool isSoSuatAn = int.TryParse(SuatAn, out SoSuatAn);
-                if (isSoSuatAn)
+                if (Convert.ToInt32(txtSuatAn.Text) < 0)
                 {
-                    if (Convert.ToInt32(txtSuatAn.Text) < 0)
-                    {
-                        MessageBox.Show("Vui lòng nhập ít nhất 1 suất ăn.");
-                        return;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng nhập số suất ăn hợp lệ");
+                    MessageBox.Show("Vui lòng nhập ít nhất 1 suất ăn.");
                     return;
                 }
-
-                DateTime ngay = dtNgay.Value.Date;
-                //var ngayString = ngay.ToString("dd/MM/yyyy");
-                DateTime now = DateTime.Now;
-                //var nowString = now.ToString("dd/MM/yyyy");
-
-                //if(cbMonSang1 != null)
-                //{
-
-                //}
-                string idBua1 = "1";
-                string idMon1 = cbMonSang1.SelectedValue.ToString();
-
-                if ((cbSang1.ValueMember.ToString() == "")
-                    && (cbSang2.ValueMember.ToString() == "")
-                    && cbXe11.ValueMember.ToString() == "" && cbXe12.ValueMember.ToString() == "" && cbTrua1.ValueMember.ToString() == "" && cbTrua2.ValueMember.ToString() == "" && cbTrua3.ValueMember.ToString() == "" && cbTrua4.ValueMember.ToString() == "" && cbXe21.ValueMember.ToString() == "" && cbXe22.ValueMember.ToString() == ""
-                    )
-                {
-                    MessageBox.Show("Vui lòng nhập ít nhất 1 món ăn.");
-                    return;
-                }
-
-                ThucDon.ThemThucDon(now,ngay,SoSuatAn,idMon1,idBua1);
-
-                MessageBox.Show("Thêm thành công", "STATUS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception exception)
+            else
             {
-                MessageBox.Show(exception.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập số suất ăn hợp lệ");
+                return;
             }
-            
-            //if (cbMonSang1.SelectedIndex.ToString() == "-1")
-            //{
-            //    MessageBox.Show("cbMonSang1 rỗng");
-            //    //save
-            //}
-            //else
-            //{
-            //    //ThucDon.ThemThucDon=
-            //    MessageBox.Show(cbMonSang1.SelectedValue.ToString());
-      
-            //}
 
-            //if (cbMonSang2.SelectedIndex.ToString() == "-1")
-            //{
+            DateTime ngay = dtNgay.Value.Date;
+            var ngayString = ngay.ToString("dd/MM/yyyy");
+            DateTime now = DateTime.Now;
+            var nowString = now.ToString("dd/MM/yyyy");
+
+            if ((cbSang1.ValueMember.ToString() == "")
+                && (cbSang2.ValueMember.ToString() == "")
+                && cbXe11.ValueMember.ToString() == "" && cbXe12.ValueMember.ToString() == "" && cbTrua1.ValueMember.ToString() == "" && cbTrua2.ValueMember.ToString() == "" && cbTrua3.ValueMember.ToString() == "" && cbTrua4.ValueMember.ToString() == "" && cbXe21.ValueMember.ToString() == "" && cbXe22.ValueMember.ToString() == ""
+                )
+            {
+                MessageBox.Show("Vui lòng nhập ít nhất 1 món ăn.");
+                return;
+            }
+            if (cbMonSang1.SelectedIndex.ToString() == "-1")
+            {
+                MessageBox.Show("cbMonSang1 rỗng");
+                //save
+            }
+            else
+            {
+                //ThucDon.ThemThucDon=
+                MessageBox.Show(cbMonSang1.SelectedValue.ToString());
+            }
+
+            if (cbMonSang2.SelectedIndex.ToString() == "-1")
+            {
                 
-            //    //MessageBox.Show("cbMonSang2 rỗng");
-            //    //save
-            //}
-        }
-
-        private void cbMonSang1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+                //MessageBox.Show("cbMonSang2 rỗng");
+                //save
+            }
         }
     }
 }
