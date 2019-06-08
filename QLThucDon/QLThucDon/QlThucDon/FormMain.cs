@@ -6,9 +6,13 @@ namespace QlThucDon
 {
     public partial class FormMain : MetroForm
     {
-        public FormMain()
+        int quyen;
+        public FormMain(User user)
         {
             InitializeComponent();
+            AdapterUserToQuanTri adapter = new AdapterUserToQuanTri(user);
+            lblTen.Text = Convert.ToString(adapter.getQuyen());
+           // lblTen.Text = user.getTen();
         }
 
         private void btnThucDon_Click(object sender, EventArgs e)
@@ -30,6 +34,9 @@ namespace QlThucDon
             panelInfor.Controls.Add(UCThucDon.Instance);
             UCThucDon.Instance.Dock = DockStyle.Fill;
             UCThucDon.Instance.BringToFront();
+            //lblTen.Text=
+            
+            
         }
 
         
@@ -47,5 +54,7 @@ namespace QlThucDon
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
         }
+
+       
     }
 }
