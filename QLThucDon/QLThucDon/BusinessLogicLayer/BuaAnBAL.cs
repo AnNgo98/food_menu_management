@@ -5,17 +5,24 @@ namespace BusinessLogicLayer
 {
     public class BuaAnBAL
     {
-        private DAL db;
+        //private DAL db;
 
-        public BuaAnBAL()
-        {
-            db = new DAL();
-        }
+        //public BuaAnBAL()
+        //{
+        //    db = new DAL();
+        //}
 
+        //public DataSet LayTatCaBuaAn()
+        //{
+        //    string query = "LayBuaAn";
+        //    return db.ExecuteQuery(query, CommandType.StoredProcedure, null);
+        //}
+
+        //--------
         public DataSet LayTatCaBuaAn()
         {
             string query = "LayBuaAn";
-            return db.ExecuteQuery(query, CommandType.StoredProcedure, null);
+            return DataProvider.Ins.db.ExecuteQuery(query, CommandType.StoredProcedure, null);
         }
     }
 }

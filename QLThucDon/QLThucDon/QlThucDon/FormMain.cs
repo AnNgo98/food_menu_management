@@ -6,7 +6,7 @@ namespace QlThucDon
 {
     public partial class FormMain : MetroForm
     {
-        int quyen;
+        //int quyen;
         public FormMain(User user)
         {
             InitializeComponent();

@@ -33,10 +33,10 @@
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.dtNgay = new MetroFramework.Controls.MetroDateTime();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lbXeChieu = new MetroFramework.Controls.MetroLabel();
+            this.lbTrua = new MetroFramework.Controls.MetroLabel();
+            this.lbXeSang = new MetroFramework.Controls.MetroLabel();
+            this.lbSang = new MetroFramework.Controls.MetroLabel();
             this.cbMonTrua4 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.lblChatDam = new MetroFramework.Controls.MetroLabel();
@@ -127,45 +127,45 @@
             this.dtNgay.Size = new System.Drawing.Size(105, 29);
             this.dtNgay.TabIndex = 25;
             // 
-            // metroLabel4
+            // lbXeChieu
             // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(626, 65);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(35, 19);
-            this.metroLabel4.TabIndex = 23;
-            this.metroLabel4.Text = "Xế 2";
+            this.lbXeChieu.AutoSize = true;
+            this.lbXeChieu.Location = new System.Drawing.Point(626, 65);
+            this.lbXeChieu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbXeChieu.Name = "lbXeChieu";
+            this.lbXeChieu.Size = new System.Drawing.Size(35, 19);
+            this.lbXeChieu.TabIndex = 23;
+            this.lbXeChieu.Text = "Xế 2";
             // 
-            // metroLabel3
+            // lbTrua
             // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(431, 65);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(34, 19);
-            this.metroLabel3.TabIndex = 22;
-            this.metroLabel3.Text = "Trưa";
+            this.lbTrua.AutoSize = true;
+            this.lbTrua.Location = new System.Drawing.Point(431, 65);
+            this.lbTrua.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTrua.Name = "lbTrua";
+            this.lbTrua.Size = new System.Drawing.Size(34, 19);
+            this.lbTrua.TabIndex = 22;
+            this.lbTrua.Text = "Trưa";
             // 
-            // metroLabel2
+            // lbXeSang
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(235, 65);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(33, 19);
-            this.metroLabel2.TabIndex = 21;
-            this.metroLabel2.Text = "Xế 1";
+            this.lbXeSang.AutoSize = true;
+            this.lbXeSang.Location = new System.Drawing.Point(235, 65);
+            this.lbXeSang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbXeSang.Name = "lbXeSang";
+            this.lbXeSang.Size = new System.Drawing.Size(33, 19);
+            this.lbXeSang.TabIndex = 21;
+            this.lbXeSang.Text = "Xế 1";
             // 
-            // metroLabel1
+            // lbSang
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(39, 65);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(38, 19);
-            this.metroLabel1.TabIndex = 20;
-            this.metroLabel1.Text = "Sáng";
+            this.lbSang.AutoSize = true;
+            this.lbSang.Location = new System.Drawing.Point(39, 65);
+            this.lbSang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSang.Name = "lbSang";
+            this.lbSang.Size = new System.Drawing.Size(38, 19);
+            this.lbSang.TabIndex = 20;
+            this.lbSang.Text = "Sáng";
             // 
             // cbMonTrua4
             // 
@@ -564,6 +564,7 @@
             this.cbMonSang1.Size = new System.Drawing.Size(110, 29);
             this.cbMonSang1.TabIndex = 1;
             this.cbMonSang1.UseSelectable = true;
+            this.cbMonSang1.SelectedIndexChanged += new System.EventHandler(this.cbMonSang1_SelectedIndexChanged);
             this.cbMonSang1.SelectedValueChanged += new System.EventHandler(this.cbMonSang1_SelectedValueChanged);
             // 
             // cbSang1
@@ -621,10 +622,10 @@
             this.panel1.Controls.Add(this.metroLabel16);
             this.panel1.Controls.Add(this.metroLabel6);
             this.panel1.Controls.Add(this.dtNgay);
-            this.panel1.Controls.Add(this.metroLabel4);
-            this.panel1.Controls.Add(this.metroLabel3);
-            this.panel1.Controls.Add(this.metroLabel2);
-            this.panel1.Controls.Add(this.metroLabel1);
+            this.panel1.Controls.Add(this.lbXeChieu);
+            this.panel1.Controls.Add(this.lbTrua);
+            this.panel1.Controls.Add(this.lbXeSang);
+            this.panel1.Controls.Add(this.lbSang);
             this.panel1.Controls.Add(this.cbMonTrua4);
             this.panel1.Controls.Add(this.cbTrua4);
             this.panel1.Controls.Add(this.cbMonTrua3);
@@ -683,10 +684,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel16;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroDateTime dtNgay;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel lbXeChieu;
+        private MetroFramework.Controls.MetroLabel lbTrua;
+        private MetroFramework.Controls.MetroLabel lbXeSang;
+        private MetroFramework.Controls.MetroLabel lbSang;
         private MetroFramework.Controls.MetroComboBox cbMonTrua4;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel lblChatDam;

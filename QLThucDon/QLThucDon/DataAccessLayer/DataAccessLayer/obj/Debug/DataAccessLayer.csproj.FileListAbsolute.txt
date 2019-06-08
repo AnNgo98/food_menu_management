@@ -1,0 +1,12 @@
+C:\Users\COMPUTER\Desktop\QLThucDon\QlThucDon\DataAccessLayer\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\COMPUTER\Desktop\QLThucDon\QlThucDon\DataAccessLayer\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\COMPUTER\Desktop\QLThucDon\QlThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\COMPUTER\Desktop\QLThucDon\QlThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\COMPUTER\Desktop\QLThucDon\QlThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\COMPUTER\Desktop\QLThucDon\QlThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\AnNgo\Documents\GitHub\food_menu_management\QLThucDon\QLThucDon\DataAccessLayer\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\AnNgo\Documents\GitHub\food_menu_management\QLThucDon\QLThucDon\DataAccessLayer\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\AnNgo\Documents\GitHub\food_menu_management\QLThucDon\QLThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache
+C:\Users\AnNgo\Documents\GitHub\food_menu_management\QLThucDon\QLThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\AnNgo\Documents\GitHub\food_menu_management\QLThucDon\QLThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\AnNgo\Documents\GitHub\food_menu_management\QLThucDon\QLThucDon\DataAccessLayer\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
