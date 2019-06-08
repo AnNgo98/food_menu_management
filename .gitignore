@@ -11,7 +11,7 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+*.html
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -207,6 +207,7 @@ _pkginfo.txt
 # Visual Studio cache files
 # files ending in .cache can be ignored
 *.[Cc]ache
+*.cache
 # but keep track of directories ending in .cache
 !*.[Cc]ache/
 
@@ -328,3 +329,4 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+QLThucDon/QLThucDon/.vs/QlThucDon/v15/Server/sqlite3/db.lock
