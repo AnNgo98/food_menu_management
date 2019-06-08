@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterUserToQuanTri.cs" />
     <Compile Include="crudMonAn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanTriVien.cs" />
+    <Compile Include="QuanTriVienInterface.cs" />
     <Compile Include="UCThucDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +108,8 @@
     <Compile Include="UCThucPham.Designer.cs">
       <DependentUpon>UCThucPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="UserInterface.cs" />
     <EmbeddedResource Include="crudMonAn.resx">
       <DependentUpon>crudMonAn.cs</DependentUpon>
     </EmbeddedResource>

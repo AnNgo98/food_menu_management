@@ -30,10 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHuy = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnThucPham = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnThucDon = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelInfor = new System.Windows.Forms.Panel();
-            this.btnHuy = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.lblTen = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +50,41 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(142, 517);
             this.panel1.TabIndex = 0;
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(100)))), ((int)(((byte)(67)))));
+            this.btnHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHuy.BorderRadius = 0;
+            this.btnHuy.ButtonText = "Đóng";
+            this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHuy.DisabledColor = System.Drawing.Color.Gray;
+            this.btnHuy.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnHuy.Iconimage = null;
+            this.btnHuy.Iconimage_right = null;
+            this.btnHuy.Iconimage_right_Selected = null;
+            this.btnHuy.Iconimage_Selected = null;
+            this.btnHuy.IconMarginLeft = 0;
+            this.btnHuy.IconMarginRight = 0;
+            this.btnHuy.IconRightVisible = true;
+            this.btnHuy.IconRightZoom = 0D;
+            this.btnHuy.IconVisible = true;
+            this.btnHuy.IconZoom = 90D;
+            this.btnHuy.IsTab = false;
+            this.btnHuy.Location = new System.Drawing.Point(3, 460);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(100)))), ((int)(((byte)(67)))));
+            this.btnHuy.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(78)))), ((int)(((byte)(149)))));
+            this.btnHuy.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnHuy.selected = false;
+            this.btnHuy.Size = new System.Drawing.Size(139, 37);
+            this.btnHuy.TabIndex = 17;
+            this.btnHuy.Text = "Đóng";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnHuy.Textcolor = System.Drawing.Color.White;
+            this.btnHuy.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnThucPham
             // 
@@ -130,46 +166,21 @@
             this.panelInfor.Size = new System.Drawing.Size(842, 528);
             this.panelInfor.TabIndex = 1;
             // 
-            // btnHuy
+            // lblTen
             // 
-            this.btnHuy.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(100)))), ((int)(((byte)(67)))));
-            this.btnHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHuy.BorderRadius = 0;
-            this.btnHuy.ButtonText = "Đóng";
-            this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHuy.DisabledColor = System.Drawing.Color.Gray;
-            this.btnHuy.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnHuy.Iconimage = null;
-            this.btnHuy.Iconimage_right = null;
-            this.btnHuy.Iconimage_right_Selected = null;
-            this.btnHuy.Iconimage_Selected = null;
-            this.btnHuy.IconMarginLeft = 0;
-            this.btnHuy.IconMarginRight = 0;
-            this.btnHuy.IconRightVisible = true;
-            this.btnHuy.IconRightZoom = 0D;
-            this.btnHuy.IconVisible = true;
-            this.btnHuy.IconZoom = 90D;
-            this.btnHuy.IsTab = false;
-            this.btnHuy.Location = new System.Drawing.Point(3, 460);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(100)))), ((int)(((byte)(67)))));
-            this.btnHuy.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(78)))), ((int)(((byte)(149)))));
-            this.btnHuy.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnHuy.selected = false;
-            this.btnHuy.Size = new System.Drawing.Size(139, 37);
-            this.btnHuy.TabIndex = 17;
-            this.btnHuy.Text = "Đóng";
-            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnHuy.Textcolor = System.Drawing.Color.White;
-            this.btnHuy.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            this.lblTen.AutoSize = true;
+            this.lblTen.Location = new System.Drawing.Point(787, 19);
+            this.lblTen.Name = "lblTen";
+            this.lblTen.Size = new System.Drawing.Size(36, 13);
+            this.lblTen.TabIndex = 2;
+            this.lblTen.Text = "lblTen";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 593);
+            this.Controls.Add(this.lblTen);
             this.Controls.Add(this.panelInfor);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -180,6 +191,7 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -190,5 +202,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnThucPham;
         private Bunifu.Framework.UI.BunifuFlatButton btnThucDon;
         private Bunifu.Framework.UI.BunifuFlatButton btnHuy;
+        private System.Windows.Forms.Label lblTen;
     }
 }
