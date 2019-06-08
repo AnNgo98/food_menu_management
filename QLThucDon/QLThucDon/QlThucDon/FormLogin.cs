@@ -8,6 +8,7 @@ namespace QlThucDon
 {
     public partial class FormLogin : MetroForm
     {
+        User userCurrent = new User();
         private TaiKhoanBAL TaiKhoan = new TaiKhoanBAL();
 
         public FormLogin()
@@ -63,7 +64,7 @@ namespace QlThucDon
             if (KiemTra(txtUsername.Text, txtPassword.Text))
             {
                 this.Hide();
-                FormMain frm = new FormMain();
+                FormMain frm = new FormMain(userCurrent);
                 frm.Show();                
             }
             else
@@ -75,14 +76,18 @@ namespace QlThucDon
 
         private bool KiemTra(string user, string pass)
         {
+           
             bool check = false;
             DataSet ds = TaiKhoan.LayTatCaTaiKhoan();
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
+                int id = Convert.ToInt32(ds.Tables[0].Rows[i][0].ToString().Split(' ')[0]);
                 string taikhoan = ds.Tables[0].Rows[i][1].ToString().Split(' ')[0];
                 string matkhau = ds.Tables[0].Rows[i][2].ToString().Split(' ')[0];
                 if (taikhoan.Equals(user) && matkhau.Equals(pass))
                 {
+                    userCurrent.setID(id);
+                    userCurrent.setTen(taikhoan);
                     check = true;
                 }
             }
