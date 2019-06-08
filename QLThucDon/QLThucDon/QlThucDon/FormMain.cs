@@ -55,6 +55,11 @@ namespace QlThucDon
             formLogin.Show();
         }
 
-       
+        private void btnXemThucDon_Click(object sender, EventArgs e)
+        {
+            panelInfor.Controls.Add(UCLoadThucDon.Instance);
+            UCLoadThucDon.Instance.Dock = DockStyle.Fill;
+            UCLoadThucDon.Instance.BringToFront();
+        }
     }
 }

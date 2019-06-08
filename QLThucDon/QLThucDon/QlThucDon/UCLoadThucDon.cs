@@ -16,8 +16,28 @@ namespace QlThucDon
         {
             InitializeComponent();
         }
+        private static UCLoadThucDon _instance;
+        public static UCLoadThucDon Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new UCLoadThucDon();
+                return _instance;
+            }
+        }
 
-        private void label20_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
