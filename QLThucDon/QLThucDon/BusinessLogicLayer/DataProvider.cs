@@ -9,7 +9,7 @@ namespace BusinessLogicLayer
 {
     public class DataProvider
     {
-        // tạo ins duy nhất trong class
+        // tạo ins duy nhất trong 
         private static DataProvider _ins;
 
         // public ins 

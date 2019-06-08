@@ -10,17 +10,17 @@ namespace BusinessLogicLayer
 {
     public class TaiKhoanBAL
     {
-        private DAL db;
-        
-        public TaiKhoanBAL()
-        {
-            db = new DAL();
-        }
+        //private DAL db;
+
+        //public TaiKhoanBAL()
+        //{
+        //    db = new DAL();
+        //}
 
         public DataSet LayTatCaTaiKhoan()
         {
             string query = "SELECT * FROM TaiKhoan";
-            return db.ExecuteQuery(query, CommandType.Text, null);
+            return DataProvider.Ins.db.ExecuteQuery(query, CommandType.Text, null);
         }
     }
 }
