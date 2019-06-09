@@ -11,7 +11,7 @@ namespace QlThucDon
         {
             InitializeComponent();
             AdapterUserToQuanTri adapter = new AdapterUserToQuanTri(user);
-            lblTen.Text += Convert.ToString(adapter.getQuyen());
+            lblTen.Text = Convert.ToString(adapter.getQuyen());
            // lblTen.Text = user.getTen();
         }
 
@@ -55,11 +55,6 @@ namespace QlThucDon
             formLogin.Show();
         }
 
-        private void btnXemThucDon_Click(object sender, EventArgs e)
-        {
-            panelInfor.Controls.Add(UCLoadThucDon.Instance);
-            UCLoadThucDon.Instance.Dock = DockStyle.Fill;
-            UCLoadThucDon.Instance.BringToFront();
-        }
+       
     }
 }

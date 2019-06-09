@@ -87,7 +87,6 @@
             this.dgvNguyenLieu.RowTemplate.Height = 24;
             this.dgvNguyenLieu.Size = new System.Drawing.Size(355, 165);
             this.dgvNguyenLieu.TabIndex = 35;
-            this.dgvNguyenLieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguyenLieu_CellContentClick);
             // 
             // txtSuatAn
             // 
@@ -196,9 +195,8 @@
             this.lblChatDam.Location = new System.Drawing.Point(116, 92);
             this.lblChatDam.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChatDam.Name = "lblChatDam";
-            this.lblChatDam.Size = new System.Drawing.Size(40, 19);
+            this.lblChatDam.Size = new System.Drawing.Size(0, 0);
             this.lblChatDam.TabIndex = 28;
-            this.lblChatDam.Text = "Ngày";
             // 
             // metroLabel9
             // 
@@ -216,9 +214,8 @@
             this.lblNangLuong.Location = new System.Drawing.Point(116, 59);
             this.lblNangLuong.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNangLuong.Name = "lblNangLuong";
-            this.lblNangLuong.Size = new System.Drawing.Size(40, 19);
+            this.lblNangLuong.Size = new System.Drawing.Size(0, 0);
             this.lblNangLuong.TabIndex = 26;
-            this.lblNangLuong.Text = "Ngày";
             // 
             // metroLabel5
             // 
@@ -404,9 +401,8 @@
             this.lblChatBeo.Location = new System.Drawing.Point(116, 123);
             this.lblChatBeo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChatBeo.Name = "lblChatBeo";
-            this.lblChatBeo.Size = new System.Drawing.Size(40, 19);
+            this.lblChatBeo.Size = new System.Drawing.Size(0, 0);
             this.lblChatBeo.TabIndex = 30;
-            this.lblChatBeo.Text = "Ngày";
             // 
             // btnHuy
             // 
@@ -488,9 +484,8 @@
             this.lblTinhBot.Location = new System.Drawing.Point(116, 152);
             this.lblTinhBot.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTinhBot.Name = "lblTinhBot";
-            this.lblTinhBot.Size = new System.Drawing.Size(40, 19);
+            this.lblTinhBot.Size = new System.Drawing.Size(0, 0);
             this.lblTinhBot.TabIndex = 32;
-            this.lblTinhBot.Text = "Ngày";
             // 
             // cbXe12
             // 

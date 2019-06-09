@@ -29,12 +29,6 @@ namespace BusinessLogicLayer
                 new SqlParameter("@IDMonAn", idMon),
                 new SqlParameter("@IDBua", idBua));
         }
-        public DataSet LayTatCaThucDon()
-        {
-            string query = "LayThucDon";
-            return DataProvider.Ins.db.ExecuteQuery(query, CommandType.StoredProcedure, null);
-        }
-       
     }
 }
 

@@ -20,6 +20,16 @@ namespace QlThucDon
         private ThucDonBAL ThucDon = new ThucDonBAL();
         private BuaAnBAL BuaAn = new BuaAnBAL();
 
+        ChatDinhDuong Glu;
+        ChatDinhDuong Li;
+        ChatDinhDuong Kc;
+        ChatDinhDuong Pr;
+        MonAn monAn;
+
+        float Lipid = 0;
+        float Protid = 0;
+        float Kcal = 0;
+        float Glucid = 0;
 
         string monSang1;
         string monSang2;
@@ -34,9 +44,19 @@ namespace QlThucDon
 
         string monXe21;
         string monXe22;
+
         public UCThucDon()
         {
             InitializeComponent();
+            Glu = new ChatDinhDuong(lblTinhBot);
+            Li = new ChatDinhDuong(lblChatBeo);
+            Kc = new ChatDinhDuong(lblNangLuong);
+            Pr = new ChatDinhDuong(lblChatDam);
+            monAn = new MonAn();
+            monAn.AddChatDinhDuong(Glu);
+            monAn.AddChatDinhDuong(Li);
+            monAn.AddChatDinhDuong(Kc);
+            monAn.AddChatDinhDuong(Pr);
         }
 
         private static UCThucDon _instance;
@@ -52,19 +72,16 @@ namespace QlThucDon
 
         private void UCThucDon_Load(object sender, EventArgs e)
         {
-            DataSet dsBuaAn = BuaAn.LayTatCaBuaAn();
-            lbSang.Text = dsBuaAn.Tables[0].Rows[0][1].ToString();
-            lbXeSang.Text = dsBuaAn.Tables[0].Rows[1][1].ToString();
-            lbTrua.Text = dsBuaAn.Tables[0].Rows[2][1].ToString();
-            lbXeChieu.Text = dsBuaAn.Tables[0].Rows[3][1].ToString();
+            
         }
 
         //Hiển thị món
+
+        // Vấn đề loop 6 lần
         private void cbSang1_SelectedValueChanged(object sender, EventArgs e)
         {
-
             int MonSang1 = Convert.ToInt32(cbSang1.SelectedIndex.ToString());
-            DataSet dsMonSang = MonAn.LayMonAnTheoID(MonSang1 + 1);
+            DataSet dsMonSang = MonAn.LayMonAnTheoID(MonSang1+1);
             cbMonSang1.DataSource = dsMonSang.Tables[0];
             cbMonSang1.ValueMember = dsMonSang.Tables[0].Columns[0].ToString();
             cbMonSang1.DisplayMember = dsMonSang.Tables[0].Columns[1].ToString();
@@ -164,7 +181,6 @@ namespace QlThucDon
             {
                 monTrua4 = cbMonTrua4.SelectedValue.ToString();
             }
-
         }
 
         private void cbXe21_SelectedValueChanged(object sender, EventArgs e)
@@ -193,36 +209,17 @@ namespace QlThucDon
                 monXe22 = cbMonXe22.SelectedValue.ToString();
             }
         }
-
-
         //Hiển thị datagridview
         //Tạo 1 dataset tổng rồi add từng cái vào       
 
         private void cbMonSang1_SelectedValueChanged(object sender, EventArgs e)
         {
             GetNguyenLieu();
-            try
-            {
-                string x = cbMonSang1.SelectedValue.ToString();
-            }
-            catch (Exception)
-            {
-
-            }
         }
 
         private void cbMonSang2_SelectedValueChanged(object sender, EventArgs e)
         {
             GetNguyenLieu();
-            try
-            {
-                string y = cbMonSang2.SelectedValue.ToString();
-                //MessageBox.Show(y);
-            }
-            catch (Exception)
-            {
-
-            }
         }
 
         private void cbMonXe11_SelectedValueChanged(object sender, EventArgs e)
@@ -271,31 +268,32 @@ namespace QlThucDon
             DataSet dsNguyenLieu = new DataSet();
             //dsMon lấy nguyên liệu của món đã chọn
             DataSet dsMon;
-            float Lipid = 0;
-            float Protid = 0;
-            float Kcal = 0;
-            float Glucid = 0;
+            
             //Nếu cb món có giá trị khác null, tức là đã chọn.
-            if (cbMonSang1.SelectedIndex >= 0)
-            {
+            //loop
+
+            if (cbMonSang1.ValueMember != "")
+            {                
                 try
                 {
                     int ChiTietMon = Convert.ToInt32(cbMonSang1.SelectedValue.ToString());
                     dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
                     dsNguyenLieu = dsMon;
-
                     DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
                     for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
                     {
                         Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
                         Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());                        
                         Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
+                    monAn.MonAnThem(new float[] { Glucid, Lipid, Kcal, Protid });
+                    monAn.update();
+                    //monAn.MonAnRefresh();
+                    //Glu.Value = Glucid;
+                    //Pr.Value = Protid;
+                    //Li.Value = Lipid;
+                    //Kc.Value = Kcal;
                 }
                 catch (Exception)
                 {
@@ -303,288 +301,338 @@ namespace QlThucDon
 
                 }
             }
+            
 
-            if (cbMonSang2.SelectedIndex > 0)
+            if (cbMonSang2.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonSang2.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
+                    int ChiTietMon = Convert.ToInt32(cbMonSang2.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
+                    {
+                        dsNguyenLieu = dsMon;
+                    }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+
+                        }
+
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
+                    }
                 }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
-                    {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                catch (Exception)
+                {
 
-                    }
-
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
-                    }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
             }
 
-            if (cbMonXe11.ValueMember != "")
+            if (cbMonXe11.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonXe11.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    int ChiTietMon = Convert.ToInt32(cbMonXe11.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        }
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
 
-            if (cbMonXe12.ValueMember != "")
+            if (cbMonXe12.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonXe12.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    //Lấy id món
+                    int ChiTietMon = Convert.ToInt32(cbMonXe12.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        }
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
 
-            if (cbMonTrua1.ValueMember != "")
+            if (cbMonTrua1.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonTrua1.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    int ChiTietMon = Convert.ToInt32(cbMonTrua1.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        }
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
 
-            if (cbMonTrua2.ValueMember != "")
+            if (cbMonTrua2.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonTrua2.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    int ChiTietMon = Convert.ToInt32(cbMonTrua2.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        }
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
 
-            if (cbMonTrua3.ValueMember != "")
+            if (cbMonTrua3.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonTrua3.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    int ChiTietMon = Convert.ToInt32(cbMonTrua3.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        }
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
 
-            if (cbMonTrua4.ValueMember != "")
+            if (cbMonTrua4.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonTrua4.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    int ChiTietMon = Convert.ToInt32(cbMonTrua4.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        }
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
 
-            if (cbMonXe21.ValueMember != "")
+            if (cbMonXe21.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonXe21.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    int ChiTietMon = Convert.ToInt32(cbMonXe21.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
+                        }
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glu.Value += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        //Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
 
-            if (cbMonXe22.ValueMember != "")
+            if (cbMonXe22.SelectedIndex >= 0)
             {
-                int ChiTietMon = Convert.ToInt32(cbMonXe22.SelectedValue.ToString());
-                dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
-                //Nếu rỗng thì gán luôn
-                if (dsNguyenLieu.Tables.Count == 0)
+                try
                 {
-                    dsNguyenLieu = dsMon;
-                }
-                else
-                {   //Không rỗng thì ta thêm vào
-                    foreach (DataRow dr in dsMon.Tables[0].Rows)
+                    int ChiTietMon = Convert.ToInt32(cbMonXe22.SelectedValue.ToString());
+                    dsMon = NguyenLieu.LayNguyenLieuMonAnTheoID(ChiTietMon);
+                    //Nếu rỗng thì gán luôn
+                    if (dsNguyenLieu.Tables.Count == 0)
                     {
-                        dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
-
+                        dsNguyenLieu = dsMon;
                     }
+                    else
+                    {   //Không rỗng thì ta thêm vào
+                        foreach (DataRow dr in dsMon.Tables[0].Rows)
+                        {
+                            dsNguyenLieu.Tables[0].Rows.Add(dr.ItemArray);
 
-                    DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
-                    for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
-                    {
-                        Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
-                        Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
-                        Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
-                        Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+
+                        DataSet dsDinhDuong = MonAn.LayNguyenLieuMonAnTheoIDMon(ChiTietMon);
+                        for (int i = 0; i < dsDinhDuong.Tables[0].Rows.Count; i++)
+                        {
+                            Glucid += float.Parse(dsDinhDuong.Tables[0].Rows[i][0].ToString());
+                            Kcal += float.Parse(dsDinhDuong.Tables[0].Rows[i][1].ToString());
+                            Lipid += float.Parse(dsDinhDuong.Tables[0].Rows[i][2].ToString());
+                            Protid += float.Parse(dsDinhDuong.Tables[0].Rows[i][3].ToString());
+                        }
+                        Glu.Value = Glucid;
+                        Kc.Value = Kcal;
+                        Li.Value = Lipid;
+                        Pr.Value = Protid;
+                        monAn.update();
                     }
-                    lblTinhBot.Text = Glucid.ToString() + " Gam";
-                    lblNangLuong.Text = Kcal.ToString() + " Kcal";
-                    lblChatBeo.Text = Lipid.ToString() + " Gam";
-                    lblChatDam.Text = Protid.ToString() + " Gam";
                 }
+                catch { }
             }
-
+            
             if (dsNguyenLieu.Tables.Count != 0)
             {
                 dgvNguyenLieu.DataSource = dsNguyenLieu.Tables[0];
@@ -705,8 +753,8 @@ namespace QlThucDon
 
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
-            //string value1 = cbMonSang1.ValueMember.ToString();
-            //if (!String.IsNullOrEmpty(value1))
+            //string Value = cbMonSang1.ValueMember.ToString();
+            //if (!String.IsNullOrEmpty(Value))
             //{
 
             //}
@@ -817,11 +865,6 @@ namespace QlThucDon
         }
 
         private void cbMonSang1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvNguyenLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnXemThucDon = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnHuy = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnThucPham = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnThucDon = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -42,7 +41,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.btnXemThucDon);
             this.panel1.Controls.Add(this.btnHuy);
             this.panel1.Controls.Add(this.btnThucPham);
             this.panel1.Controls.Add(this.btnThucDon);
@@ -50,44 +48,8 @@
             this.panel1.Location = new System.Drawing.Point(15, 60);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(163, 517);
+            this.panel1.Size = new System.Drawing.Size(142, 517);
             this.panel1.TabIndex = 0;
-            // 
-            // btnXemThucDon
-            // 
-            this.btnXemThucDon.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
-            this.btnXemThucDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnXemThucDon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnXemThucDon.BorderRadius = 0;
-            this.btnXemThucDon.ButtonText = "Xem thực đơn";
-            this.btnXemThucDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnXemThucDon.DisabledColor = System.Drawing.Color.Gray;
-            this.btnXemThucDon.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnXemThucDon.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnXemThucDon.Iconimage")));
-            this.btnXemThucDon.Iconimage_right = null;
-            this.btnXemThucDon.Iconimage_right_Selected = null;
-            this.btnXemThucDon.Iconimage_Selected = null;
-            this.btnXemThucDon.IconMarginLeft = 0;
-            this.btnXemThucDon.IconMarginRight = 0;
-            this.btnXemThucDon.IconRightVisible = true;
-            this.btnXemThucDon.IconRightZoom = 0D;
-            this.btnXemThucDon.IconVisible = true;
-            this.btnXemThucDon.IconZoom = 60D;
-            this.btnXemThucDon.IsTab = false;
-            this.btnXemThucDon.Location = new System.Drawing.Point(-1, 134);
-            this.btnXemThucDon.Margin = new System.Windows.Forms.Padding(0);
-            this.btnXemThucDon.Name = "btnXemThucDon";
-            this.btnXemThucDon.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnXemThucDon.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.btnXemThucDon.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnXemThucDon.selected = false;
-            this.btnXemThucDon.Size = new System.Drawing.Size(164, 49);
-            this.btnXemThucDon.TabIndex = 3;
-            this.btnXemThucDon.Text = "Xem thực đơn";
-            this.btnXemThucDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXemThucDon.Textcolor = System.Drawing.Color.Black;
-            this.btnXemThucDon.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemThucDon.Click += new System.EventHandler(this.btnXemThucDon_Click);
             // 
             // btnHuy
             // 
@@ -152,7 +114,7 @@
             this.btnThucPham.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
             this.btnThucPham.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnThucPham.selected = false;
-            this.btnThucPham.Size = new System.Drawing.Size(163, 49);
+            this.btnThucPham.Size = new System.Drawing.Size(142, 49);
             this.btnThucPham.TabIndex = 3;
             this.btnThucPham.Text = "Thực Phẩm";
             this.btnThucPham.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -188,7 +150,7 @@
             this.btnThucDon.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
             this.btnThucDon.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnThucDon.selected = false;
-            this.btnThucDon.Size = new System.Drawing.Size(163, 49);
+            this.btnThucDon.Size = new System.Drawing.Size(142, 49);
             this.btnThucDon.TabIndex = 2;
             this.btnThucDon.Text = "Thực đơn";
             this.btnThucDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -198,7 +160,7 @@
             // 
             // panelInfor
             // 
-            this.panelInfor.Location = new System.Drawing.Point(178, 49);
+            this.panelInfor.Location = new System.Drawing.Point(158, 49);
             this.panelInfor.Margin = new System.Windows.Forms.Padding(2);
             this.panelInfor.Name = "panelInfor";
             this.panelInfor.Size = new System.Drawing.Size(842, 528);
@@ -209,15 +171,15 @@
             this.lblTen.AutoSize = true;
             this.lblTen.Location = new System.Drawing.Point(787, 19);
             this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(65, 13);
+            this.lblTen.Size = new System.Drawing.Size(36, 13);
             this.lblTen.TabIndex = 2;
-            this.lblTen.Text = "Người dùng:";
+            this.lblTen.Text = "lblTen";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 593);
+            this.ClientSize = new System.Drawing.Size(1019, 593);
             this.Controls.Add(this.lblTen);
             this.Controls.Add(this.panelInfor);
             this.Controls.Add(this.panel1);
@@ -241,6 +203,5 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnThucDon;
         private Bunifu.Framework.UI.BunifuFlatButton btnHuy;
         private System.Windows.Forms.Label lblTen;
-        private Bunifu.Framework.UI.BunifuFlatButton btnXemThucDon;
     }
 }

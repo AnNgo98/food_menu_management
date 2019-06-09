@@ -33,7 +33,6 @@
             this.cbNhomNguyenLieu = new System.Windows.Forms.ComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.dgvNguyenLieu = new System.Windows.Forms.DataGridView();
-            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsThucPham = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chỉnhSửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +68,7 @@
             this.lbKcal_MA = new MetroFramework.Controls.MetroLabel();
             this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguyenLieu)).BeginInit();
             this.cmsThucPham.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -123,15 +123,6 @@
             this.dgvNguyenLieu.Size = new System.Drawing.Size(226, 221);
             this.dgvNguyenLieu.TabIndex = 3;
             this.dgvNguyenLieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguyenLieu_CellClick);
-            this.dgvNguyenLieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguyenLieu_CellContentClick);
-            // 
-            // Ten
-            // 
-            this.Ten.DataPropertyName = "Ten";
-            this.Ten.Frozen = true;
-            this.Ten.HeaderText = "Nguyên Liệu";
-            this.Ten.Name = "Ten";
-            this.Ten.Width = 200;
             // 
             // cmsThucPham
             // 
@@ -334,21 +325,21 @@
             // thêmToolStripMenuItem1
             // 
             this.thêmToolStripMenuItem1.Name = "thêmToolStripMenuItem1";
-            this.thêmToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.thêmToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.thêmToolStripMenuItem1.Text = "Thêm";
             this.thêmToolStripMenuItem1.Click += new System.EventHandler(this.thêmToolStripMenuItem1_Click);
             // 
             // chỉnhSửaToolStripMenuItem1
             // 
             this.chỉnhSửaToolStripMenuItem1.Name = "chỉnhSửaToolStripMenuItem1";
-            this.chỉnhSửaToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.chỉnhSửaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.chỉnhSửaToolStripMenuItem1.Text = "Chỉnh sửa";
             this.chỉnhSửaToolStripMenuItem1.Click += new System.EventHandler(this.chỉnhSửaToolStripMenuItem1_Click);
             // 
             // xóaToolStripMenuItem1
             // 
             this.xóaToolStripMenuItem1.Name = "xóaToolStripMenuItem1";
-            this.xóaToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.xóaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.xóaToolStripMenuItem1.Text = "Xóa";
             this.xóaToolStripMenuItem1.Click += new System.EventHandler(this.xóaToolStripMenuItem1_Click);
             // 
@@ -474,6 +465,14 @@
             this.metroLabel23.Size = new System.Drawing.Size(189, 19);
             this.metroLabel23.TabIndex = 3;
             this.metroLabel23.Text = "Giá trị dinh dưỡng của món ăn";
+            // 
+            // Ten
+            // 
+            this.Ten.DataPropertyName = "Ten";
+            this.Ten.Frozen = true;
+            this.Ten.HeaderText = "Nguyên Liệu";
+            this.Ten.Name = "Ten";
+            this.Ten.Width = 200;
             // 
             // UCThucPham
             // 

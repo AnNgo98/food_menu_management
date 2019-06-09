@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace QlThucDon
 {
-    class helloBabao
+    public abstract class Observer
     {
+        public abstract void update();
     }
 }

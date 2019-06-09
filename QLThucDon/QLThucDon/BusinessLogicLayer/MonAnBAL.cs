@@ -53,7 +53,7 @@ namespace BusinessLogicLayer
 
         public DataSet LayDinhDuongCuaMonAn1(int id)
         {
-            string query = "SELECT NguyenLieu.Ten, NguyenLieu.Lipid, NguyenLieu.Protid, NguyenLieu.Kcal, NguyenLieu.Glucid, MonAn.IDMonAn, MonAn.TenMonAn, CongThucMonAn.KhoiLuong FROM MonAn, CongThucMonAn, NguyenLieu WHERE CongThucMonAn.IDNguyenLieu = NguyenLieu.IDNguyenLieu AND CongThucMonAn.IDMonAn = MonAn.IDMonAn AND MonAn.IDMonAn = " + id;
+            string query = "SELECT NguyenLieu.Ten, NguyenLieu.Lipid, NguyenLieu.Protid, NguyenLieu.Kcal, NguyenLieu.Glucid FROM MonAn, CongThucMonAn, NguyenLieu WHERE CongThucMonAn.IDNguyenLieu = NguyenLieu.IDNguyenLieu AND CongThucMonAn.IDMonAn = MonAn.IDMonAn AND MonAn.IDMonAn = " + id;
             return DataProvider.Ins.db.ExecuteQuery(query, CommandType.Text, null);
         }
 

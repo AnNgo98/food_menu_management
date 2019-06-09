@@ -11,12 +11,20 @@ namespace QlThucDon
         private NhomMonAnBAL NhomMonAn = new NhomMonAnBAL();
         private NguyenLieuBAL NguyenLieu = new NguyenLieuBAL();
         private MonAnBAL MonAn = new MonAnBAL();
+        private MonAn monAn = new MonAn();
 
         public int MaNguyenLieuDuocChon = 0;
         public int MaMonAnDuocChon = 0;
         public DataSet NguyenLieuDuocChon;
         public DataSet MonAnDuocChon;
-
+        //ChatDinhDuong Glu;
+        //ChatDinhDuong Li;
+        //ChatDinhDuong Kc;
+        //ChatDinhDuong Pr;
+        //ChatDinhDuong GluMA;
+        //ChatDinhDuong LiMA;
+        //ChatDinhDuong KcMA;
+        //ChatDinhDuong PrMA;
         public UCThucPham()
         {
             InitializeComponent();
@@ -41,6 +49,23 @@ namespace QlThucDon
         private void UCThucPham_Load(object sender, EventArgs e)
         {
             LoadData();
+            //Glu = new ChatDinhDuong(lbGlucid_TP);
+            //Li = new ChatDinhDuong(lbLipit_TP);
+            //Kc = new ChatDinhDuong(lbKcal_TP);
+            //Pr = new ChatDinhDuong(lbProtid_TP);
+            //monAn.AddChatDinhDuong(Glu);
+            //monAn.AddChatDinhDuong(Li);
+            //monAn.AddChatDinhDuong(Kc);
+            //monAn.AddChatDinhDuong(Pr);      
+
+            //GluMA = new ChatDinhDuong(lbGludcid_MA);
+            //LiMA = new ChatDinhDuong(lbLipit_MA);
+            //KcMA = new ChatDinhDuong(lbKcal_MA);
+            //PrMA = new ChatDinhDuong(lbProtid_MA);
+            //monAn.AddChatDinhDuong(GluMA);
+            //monAn.AddChatDinhDuong(LiMA);
+            //monAn.AddChatDinhDuong(KcMA);
+            //monAn.AddChatDinhDuong(PrMA);
         }
 
         private void cbNhomNguyenLieu_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,10 +117,15 @@ namespace QlThucDon
             MaNguyenLieuDuocChon = int.Parse(dgvNguyenLieu.Rows[index].Cells[0].Value.ToString());
             NguyenLieuDuocChon = NguyenLieu.LayNguyenLieuChoChinhSuaThucPham(MaNguyenLieuDuocChon);
 
-            lbKcal_TP.Text = dgvNguyenLieu.Rows[index].Cells[5].Value.ToString() + " kcal";
-            lbProtid_TP.Text = dgvNguyenLieu.Rows[index].Cells[4].Value.ToString() + " gam";
-            lbLipit_TP.Text = dgvNguyenLieu.Rows[index].Cells[3].Value.ToString() + " gam";
-            lbGlucid_TP.Text = dgvNguyenLieu.Rows[index].Cells[6].Value.ToString() + " gam";
+            //lbKcal_TP.Text = dgvNguyenLieu.Rows[index].Cells[5].Value.ToString() + " kcal";
+            //lbProtid_TP.Text = dgvNguyenLieu.Rows[index].Cells[4].Value.ToString() + " gam";
+            //lbLipit_TP.Text = dgvNguyenLieu.Rows[index].Cells[3].Value.ToString() + " gam";
+            //lbGlucid_TP.Text = dgvNguyenLieu.Rows[index].Cells[6].Value.ToString() + " gam";
+            //Kc.Value = float.Parse(dgvNguyenLieu.Rows[index].Cells[5].Value.ToString());
+            //Pr.Value = float.Parse(dgvNguyenLieu.Rows[index].Cells[4].Value.ToString());
+            //Li.Value = float.Parse(dgvNguyenLieu.Rows[index].Cells[3].Value.ToString());
+            //Glu.Value = float.Parse(dgvNguyenLieu.Rows[index].Cells[6].Value.ToString());
+            monAn.update();
         }
 
         private void dgvMonAn_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -104,7 +134,6 @@ namespace QlThucDon
 
             MaMonAnDuocChon = Convert.ToInt32(dgvMonAn.Rows[index].Cells[0].Value.ToString());
             MonAnDuocChon = MonAn.LayDinhDuongCuaMonAn1(MaMonAnDuocChon);
-            //DataSet dsDinhDuong = MonAn.LayDinhDuongCuaMonAn1(MaMonAnDuocChon);
 
             dgvThanhPhanNguyenLieuCuaMonAn.DataSource = MonAnDuocChon.Tables[0];
 
@@ -117,11 +146,12 @@ namespace QlThucDon
                 totalLipit += Convert.ToDouble(dr["Lipid"].ToString());
                 totalGludcid += Convert.ToDouble(dr["Glucid"].ToString());
             }
-
-            lbKcal_MA.Text = totalKcal.ToString() + " kcal";
-            lbProtid_MA.Text = totalProtid.ToString() + " gam";
-            lbLipit_MA.Text = totalLipit.ToString() + " gam";
-            lbGludcid_MA.Text = totalGludcid.ToString() + " gam";
+            //KcMA.Value = float.Parse(totalKcal.ToString());
+            //PrMA.Value = float.Parse(totalProtid.ToString());
+            //LiMA.Value = float.Parse(totalLipit.ToString());
+            //GluMA.Value = float.Parse(totalGludcid.ToString());
+            monAn.update();
+            
         }
 
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,17 +172,13 @@ namespace QlThucDon
 
         private void LoadData()
         {
-            //DataSet dsNhomNguyenLieu = NhomNguyenLieu.LayTatCaThuocTinhNhomNguyenLieu();
             DataSet dsNhomNguyenLieu = NhomNguyenLieu.LayTatCaThuocTinhNhomNguyenLieu();
             DataTable dtNhomNguyenLieu = dsNhomNguyenLieu.Tables[0];
             DataRow topItemNhomNguyenLieu = dtNhomNguyenLieu.NewRow();
             topItemNhomNguyenLieu[0] = 0;
             topItemNhomNguyenLieu[1] = "Tất cả";
             dtNhomNguyenLieu.Rows.InsertAt(topItemNhomNguyenLieu, 0);
-            //cbNhomNguyenLieu.ValueMember = "IDNhomNguyenLieu";
-            //cbNhomNguyenLieu.DisplayMember = "TenNhom";
             cbNhomNguyenLieu.DataSource = dtNhomNguyenLieu;
-            //cbNhomNguyenLieu.DataSource = dsNhomNguyenLieu.Tables[0];
             cbNhomNguyenLieu.DisplayMember = dsNhomNguyenLieu.Tables[0].Columns[1].ToString();
             cbNhomNguyenLieu.ValueMember = dsNhomNguyenLieu.Tables[0].Columns[0].ToString();
 
@@ -164,7 +190,6 @@ namespace QlThucDon
 
             dtNhomMonAn.Rows.InsertAt(topItemNhomMonAn, 0);
             cbNhomMonAn.DataSource = dtNhomMonAn;
-            //cbNhomMonAn.DataSource = dsNhomMonAn.Tables[0];
             cbNhomMonAn.DisplayMember = dsNhomMonAn.Tables[0].Columns[1].ToString();
             cbNhomMonAn.ValueMember = dsNhomMonAn.Tables[0].Columns[0].ToString();
         }
@@ -214,11 +239,6 @@ namespace QlThucDon
         }
 
         private void xóaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvNguyenLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

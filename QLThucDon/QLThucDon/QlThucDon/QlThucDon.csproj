@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterUserToQuanTri.cs" />
+    <Compile Include="ChatDinhDuong.cs" />
     <Compile Include="crudMonAn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,11 +80,6 @@
     </Compile>
     <Compile Include="crudThucPham.Designer.cs">
       <DependentUpon>crudThucPham.cs</DependentUpon>
-    </Compile>
-    <Compile Include="food_menu_managermentDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>food_menu_managermentDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -97,17 +93,11 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="helloBabao.cs" />
+    <Compile Include="MonAn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanTriVien.cs" />
     <Compile Include="QuanTriVienInterface.cs" />
-    <Compile Include="UCLoadThucDon.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UCLoadThucDon.Designer.cs">
-      <DependentUpon>UCLoadThucDon.cs</DependentUpon>
-    </Compile>
     <Compile Include="UCThucDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +110,7 @@
     <Compile Include="UCThucPham.Designer.cs">
       <DependentUpon>UCThucPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="Observer.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserInterface.cs" />
     <EmbeddedResource Include="crudMonAn.resx">
@@ -143,26 +134,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UCLoadThucDon.resx">
-      <DependentUpon>UCLoadThucDon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UCThucDon.resx">
       <DependentUpon>UCThucDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCThucPham.resx">
       <DependentUpon>UCThucPham.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="food_menu_managermentDataSet.xsc">
-      <DependentUpon>food_menu_managermentDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="food_menu_managermentDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>food_menu_managermentDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="food_menu_managermentDataSet.xss">
-      <DependentUpon>food_menu_managermentDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
