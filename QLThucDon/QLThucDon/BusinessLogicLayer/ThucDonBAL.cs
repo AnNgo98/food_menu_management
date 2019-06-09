@@ -34,11 +34,7 @@ namespace BusinessLogicLayer
             string query = "LayThucDon";
             return DataProvider.Ins.db.ExecuteQuery(query, CommandType.StoredProcedure, null);
         }
-        public DataSet LayMonTrongThucDonTheoID(int id)
-        {
-            string query = "SELECT * FROM ThucDon,MonTrongThucDon Where MonTrongThucDon.IDThucDon = ThucDon.IDThucDon AND ThucDon.IDThucDon =" + id;
-            return DataProvider.Ins.db.ExecuteQuery(query, CommandType.Text, null);
-        }
+       
     }
 }
 

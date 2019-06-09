@@ -47,6 +47,7 @@
     <Compile Include="BuaAnBAL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="MonAnBAL.cs" />
+    <Compile Include="MonTrongThucDonBAL.cs" />
     <Compile Include="NguyenLieuBAL.cs" />
     <Compile Include="NhomNguyenLieuBAL.cs" />
     <Compile Include="TaiKhoanBAL.cs" />

@@ -11,7 +11,7 @@ namespace QlThucDon
         {
             InitializeComponent();
             AdapterUserToQuanTri adapter = new AdapterUserToQuanTri(user);
-            lblTen.Text = Convert.ToString(adapter.getQuyen());
+            lblTen.Text += Convert.ToString(adapter.getQuyen());
            // lblTen.Text = user.getTen();
         }
 
